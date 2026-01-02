@@ -2,21 +2,38 @@ package com.cledilsondevoffice.helpdesk.domain;
 
 import com.cledilsondevoffice.helpdesk.domain.enuns.Prioridade;
 import com.cledilsondevoffice.helpdesk.domain.enuns.Status;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
+@Entity
 public class Chamado {
 
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataAbertura = LocalDate.now();
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataFechamento;
+
+
     private Status status;
     private Prioridade prioridade;
     private String titulo;
     private String observacoes;
 
+    @ManyToOne
+    @JoinColumn(name = "tecnico_id")
     private Tecnico tecnico;
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
     public Chamado() {
