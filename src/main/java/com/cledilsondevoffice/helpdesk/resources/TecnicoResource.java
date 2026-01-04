@@ -2,6 +2,7 @@ package com.cledilsondevoffice.helpdesk.resources;
 
 
 import com.cledilsondevoffice.helpdesk.domain.Tecnico;
+import com.cledilsondevoffice.helpdesk.dtos.TecnicoDTO;
 import com.cledilsondevoffice.helpdesk.services.TecnicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,9 +19,9 @@ public class TecnicoResource {
     private TecnicoService tecnicoService;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Tecnico> findById(@PathVariable Integer id){
+    public ResponseEntity<TecnicoDTO> findById(@PathVariable Integer id){
         Tecnico tecnico = tecnicoService.findById(id);
-        return ResponseEntity.ok().body(tecnico);
+        return ResponseEntity.ok().body(new TecnicoDTO(tecnico));
     }
 
 }
