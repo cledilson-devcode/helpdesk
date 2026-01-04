@@ -46,7 +46,6 @@ public abstract class Pessoa implements Serializable {
         this.cpf = cpf;
         this.email = email;
         this.senha = senha;
-        addPerfil(Perfil.CLIENTE);
     }
 
     public Integer getId() {

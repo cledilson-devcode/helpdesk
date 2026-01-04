@@ -19,8 +19,10 @@ public class DBService {
 
     @Autowired
     private TecnicoRepository tecnicoRepository;
+
     @Autowired
     private ClienteRepository clienteRepository;
+
     @Autowired
     private ChamadoRepository chamadoRepository;
 
