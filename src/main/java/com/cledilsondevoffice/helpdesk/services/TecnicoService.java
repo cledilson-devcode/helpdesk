@@ -6,6 +6,7 @@ import com.cledilsondevoffice.helpdesk.services.excepitons.ObjectNotFountExcepti
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,4 +20,7 @@ public class TecnicoService {
         return tecnico.orElseThrow(() -> new ObjectNotFountException("Objeto não encontrado! ID: " + id));
     }
 
+    public List<Tecnico> findAll() {
+        return tecnicoRepository.findAll();
+    }
 }
