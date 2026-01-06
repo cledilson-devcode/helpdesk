@@ -87,8 +87,12 @@ public class TecnicoDTO implements Serializable {
         return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
     }
 
-    public void setPerfis(Perfil perfi) {
-        this.perfis.add(perfi.getCodigo());
+    public void addPerfil(Perfil perfil) {
+        this.perfis.add(perfil.getCodigo());
+    }
+
+    public void setPerfis(Set<Integer> perfis) {
+        this.perfis = perfis;
     }
 
     public LocalDate getDataCriacao() {
