@@ -1,6 +1,7 @@
 package com.cledilsondevoffice.helpdesk.services;
 
 import com.cledilsondevoffice.helpdesk.domain.Tecnico;
+import com.cledilsondevoffice.helpdesk.dtos.TecnicoDTO;
 import com.cledilsondevoffice.helpdesk.repositories.TecnicoRepository;
 import com.cledilsondevoffice.helpdesk.services.excepitons.ObjectNotFountException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,11 @@ public class TecnicoService {
 
     public List<Tecnico> findAll() {
         return tecnicoRepository.findAll();
+    }
+
+    public Tecnico create(TecnicoDTO objDTO) {
+        objDTO.setId(null);
+        Tecnico newObj = new Tecnico(objDTO);
+        return tecnicoRepository.save(newObj);
     }
 }
