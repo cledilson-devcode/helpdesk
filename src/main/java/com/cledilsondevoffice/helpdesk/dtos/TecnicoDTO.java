@@ -4,6 +4,7 @@ import com.cledilsondevoffice.helpdesk.domain.Tecnico;
 import com.cledilsondevoffice.helpdesk.domain.enuns.Perfil;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -15,11 +16,16 @@ public class TecnicoDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     protected Integer id;
+    @NotNull(message = "O campo NOME é obrigatório")
     protected String nome;
 
+    @NotNull(message = "O campo CPF é obrigatório")
     protected String cpf;
 
+    @NotNull(message = "O campo email é obrigatório")
     protected String email;
+
+    @NotNull(message = "O campo senha é obrigatório")
     protected String senha;
 
     protected Set<Integer> perfis = new HashSet<>();
